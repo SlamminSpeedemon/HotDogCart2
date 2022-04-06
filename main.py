@@ -67,7 +67,9 @@ def clear():
     watersObject.clearEntry()
     calculate()
 
-
+def save():
+    register.append([hotdogObject.getItemCount(), bratObject.getItemCount(), hamburgerObject.getItemCount(), friesObject.getItemCount(), sodasObject.getItemCount(), watersObject.getItemCount()])
+    print(register)
 #main program
 
 root = Tk()
@@ -114,7 +116,7 @@ totalString.set(totalsFormatter(hotdogObject.getPrice() + bratObject.getPrice() 
 
 # set up labels to display info
 Label(root, textvariable=totalString, bg='#FFEFDB', font=('arial', 18, 'normal')).place(x=577, y=33)
-Label(root, textvariable=dayTotalString, bg='#FFEFDB', font=('arial', 18, 'normal')).place(x=577, y=353)
+Label(root, textvariable=dayTotalString, bg='#FFEFDB', font=('arial', 18, 'normal')).place(x=577, y=343)
 Label(root, textvariable=finalTotalString, bg='#FFEFDB', font=('arial', 18, 'normal')).place(x=577, y=183)
 
 Label(root, text='Discount: ', bg='#FFEFDB', font=('arial', 18, 'normal')).place(x=577, y=143)
@@ -125,22 +127,15 @@ Button(root, text='Apply Discount', bg='#8B8378', font=('arial', 18, 'normal'), 
     x=597, y=73)
 Button(root, text='Calculate', bg='#8B8378', font=('arial', 18, 'normal'), command=lambda: calculate()).place(x=657, y=223)
 Button(root, text='Exit', bg='#CD5B45', font=('arial', 18, 'normal'), command=lambda: exit()).place(x=547, y=443)
-Button(root, text='Clear', bg='#98F5FF', font=('arial', 18, 'normal'), command=lambda: clear()).place(x=727, y=383)
+Button(root, text='Clear', bg='#CD5B45', font=('arial', 18, 'normal'), command=lambda: clear()).place(x=547, y=383)
 
+#save register buttons
+Button(root, text='Save Order', bg = '#98F5FF', font=('arial', 18, 'normal'), command=lambda: save()).place(x=687, y=383)
+Button(root, text='View Register', bg='#98F5FF', font=('arial', 18, 'normal'), command=register).place(x=663, y=443)
 
 # This is the section of code which creates a text input box
 discountBox = Entry(root)
 discountBox.place(x=687, y=143)
-
-# This is the section of code which creates a button
-# Button(root, text='Receipt', bg='#8B8378', font=('arial', 18, 'normal'), command=btnClickFunction).place(x=707, y=283)
-
-# This is the section of code which creates a button
-# Button(root, text='View Register', bg='#98F5FF', font=('arial', 18, 'normal'), command=register).place(x=637, y=443)
-
-# This is the section of code which creates a button
-#
-# This is the section of code which creates the a label
 
 
 root.mainloop()
