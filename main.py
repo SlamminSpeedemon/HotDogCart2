@@ -90,7 +90,7 @@ root = Tk()
 # This is the section of code which creates the main window
 root.geometry('870x510')
 root.configure(background='#FFEFDB')
-root.title('Food Cart')
+root.title('1453 - Hotdog - Food Cart')
 
 # GUI variables
 itemXpos = 20
@@ -98,7 +98,6 @@ itemYpos = 40
 itemYposChanger = 70
 
 totalString = StringVar()
-
 
 finalTotalString = StringVar()
 
@@ -128,25 +127,21 @@ totalString.set(totalsFormatter(hotdogObject.getPrice() + bratObject.getPrice() 
 # set up labels to display info
 Label(root, textvariable=totalString, bg='#FFEFDB', font=('arial', 18, 'normal')).place(x=577, y=33)
 Label(root, textvariable=dayTotalString, bg='#FFEFDB', font=('arial', 18, 'normal')).place(x=577, y=343)
-Label(root, textvariable=finalTotalString, bg='#FFEFDB', font=('arial', 18, 'normal')).place(x=577, y=183)
+Label(root, textvariable=finalTotalString, bg='#FFEFDB', font=('arial', 18, 'normal')).place(x=577, y=143)
 
-Label(root, text='Discount: ', bg='#FFEFDB', font=('arial', 18, 'normal')).place(x=577, y=143)
+Label(root, text='Discount: ', bg='#FFEFDB', font=('arial', 18, 'normal')).place(x=577, y=87)
 
 #Buttons
 Button(root, text='Update', bg='#8B8378', font=('arial', 18, 'normal'), command=lambda: update()).place(x=227, y=443)
-Button(root, text='Apply Discount', bg='#8B8378', font=('arial', 18, 'normal'), command=lambda: discountSet()).place(
-    x=597, y=73)
-Button(root, text='Calculate', bg='#8B8378', font=('arial', 18, 'normal'), command=lambda: calculate()).place(x=657, y=223)
-Button(root, text='Exit', bg='#CD5B45', font=('arial', 18, 'normal'), command=lambda: exit()).place(x=547, y=443)
-Button(root, text='Clear', bg='#CD5B45', font=('arial', 18, 'normal'), command=lambda: clear()).place(x=547, y=383)
-
-#save register buttons
+Button(root, text='Calculate', bg='#8B8378', font=('arial', 18, 'normal'), command=lambda: calculate()).place(x=708, y=443)
+Button(root, text='Exit', bg='#CD5B45', font=('arial', 18, 'normal'), command=lambda: exit()).place(x=577, y=443)
+Button(root, text='Clear', bg='#CD5B45', font=('arial', 18, 'normal'), command=lambda: clear()).place(x=577, y=383)
 Button(root, text='Save Order', bg = '#98F5FF', font=('arial', 18, 'normal'), command=lambda: save()).place(x=687, y=383)
-#Button(root, text='View Register', bg='#98F5FF', font=('arial', 18, 'normal'), command= lambda: openRegister(registerList)).place(x=663, y=443)
+
 
 # This is the section of code which creates a text input box
 discountBox = Entry(root)
-discountBox.place(x=687, y=143)
+discountBox.place(x=697, y=93)
 
 #MAIN WINDOW STARTS
 root.mainloop()
