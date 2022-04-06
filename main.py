@@ -10,7 +10,7 @@ hamburgerCost = 5.00
 friesCost = 2.00
 sodaCost = 2.00
 
-register = []  # 2 dimensional list that stores all previous orders
+dayVal = []  # list that stores all previous orders
 
 
 # define functions
@@ -37,12 +37,18 @@ def getFormatted():
 def getTotal():
     return hotdogObject.getPrice() + bratObject.getPrice() + hamburgerObject.getPrice() + friesObject.getPrice() + sodasObject.getPrice()
 
+def getDiscount():
+    try:
+        if (getTotal() - int(discountBox.get()) > 0):
+            return int(discountBox.get())
+        else:
+            return 0
+    except:
+        return 0
 
-def dayTotal():
-    return "Day Total: \t" + "0"
 
 
-def discountGet():
+def discountSet():
     try:
         if (getTotal() - int(discountBox.get()) > 0):
             finalTotalString.set("Final Total: \t" + str(getTotal() - int(discountBox.get())))
@@ -54,6 +60,7 @@ def discountGet():
 def calculate():
     update()
     totalString.set(getFormatted())
+    discountSet()
 
 def exit():
     root.destroy()
@@ -68,8 +75,14 @@ def clear():
     calculate()
 
 def save():
-    register.append([hotdogObject.getItemCount(), bratObject.getItemCount(), hamburgerObject.getItemCount(), friesObject.getItemCount(), sodasObject.getItemCount(), watersObject.getItemCount()])
-    print(register)
+    dayVal.append(getTotal() - getDiscount())
+    dayFinal = 0.0
+    for i in range(len(dayVal)):
+        dayFinal += float(dayVal[i])
+    dayTotalString.set("Day Total: \t" + str(dayFinal))
+
+
+
 #main program
 
 root = Tk()
@@ -88,10 +101,8 @@ totalString = StringVar()
 
 
 finalTotalString = StringVar()
-#finalTotalString.set(getFormattedTotal())
 
 dayTotalString = StringVar()
-dayTotalString.set(dayTotal())
 
 # set up objects to handle GUI
 hotdogObject = Item(hotdogCost, "hotdogs", root)
@@ -123,7 +134,7 @@ Label(root, text='Discount: ', bg='#FFEFDB', font=('arial', 18, 'normal')).place
 
 #Buttons
 Button(root, text='Update', bg='#8B8378', font=('arial', 18, 'normal'), command=lambda: update()).place(x=227, y=443)
-Button(root, text='Apply Discount', bg='#8B8378', font=('arial', 18, 'normal'), command=lambda: discountGet()).place(
+Button(root, text='Apply Discount', bg='#8B8378', font=('arial', 18, 'normal'), command=lambda: discountSet()).place(
     x=597, y=73)
 Button(root, text='Calculate', bg='#8B8378', font=('arial', 18, 'normal'), command=lambda: calculate()).place(x=657, y=223)
 Button(root, text='Exit', bg='#CD5B45', font=('arial', 18, 'normal'), command=lambda: exit()).place(x=547, y=443)
@@ -131,11 +142,13 @@ Button(root, text='Clear', bg='#CD5B45', font=('arial', 18, 'normal'), command=l
 
 #save register buttons
 Button(root, text='Save Order', bg = '#98F5FF', font=('arial', 18, 'normal'), command=lambda: save()).place(x=687, y=383)
-Button(root, text='View Register', bg='#98F5FF', font=('arial', 18, 'normal'), command=register).place(x=663, y=443)
+#Button(root, text='View Register', bg='#98F5FF', font=('arial', 18, 'normal'), command= lambda: openRegister(registerList)).place(x=663, y=443)
 
 # This is the section of code which creates a text input box
 discountBox = Entry(root)
 discountBox.place(x=687, y=143)
 
-
+#MAIN WINDOW STARTS
 root.mainloop()
+
+
