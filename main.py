@@ -1,6 +1,8 @@
 import tkinter as tk
 from tkinter import ttk
 from tkinter import *
+from Item import *
+
 
 # this is a function to get the user input from the text input box
 def getInputBoxValue():
@@ -117,29 +119,50 @@ root.geometry('840x510')
 root.configure(background='#FFEFDB')
 root.title('Food Cart')
 
-
-# This is the section of code which creates the a label
-Label(root, text='dogs', bg='#FFEFDB', font=('arial', 18, 'normal')).place(x=57, y=43)
-
-
-# This is the section of code which creates the a label
-Label(root, text='brats', bg='#FFEFDB', font=('arial', 18, 'normal')).place(x=57, y=113)
+#declare initial variables
+value = 0 #value of all products in current order
+total = 0 #value of all products in all orders
 
 
-# This is the section of code which creates the a label
-Label(root, text='hamburg', bg='#FFEFDB', font=('arial', 18, 'normal')).place(x=57, y=183)
+hotdogCost = 2.50
+
+bratCost = 3.50
+
+hamburgerCost = 5.00
+
+friesCost = 2.00
+
+sodaCost = 2.00
+
+register = [] #2 dimensional list that stores all previous orders
 
 
-# This is the section of code which creates the a label
-Label(root, text='fries', bg='#FFEFDB', font=('arial', 18, 'normal')).place(x=57, y=253)
+#GUI set up
 
+#GUI variables
+labelsXpos = 20
+labelsYPos = 40
+labelYposChanger = 70
 
-# This is the section of code which creates the a label
-Label(root, text='soda', bg='#FFEFDB', font=('arial', 18, 'normal')).place(x=57, y=323)
+#set up objects to handle GUI
+hotdogObject = Item(hotdogCost, "hotdogs")
+hotdogObject.guiStart(root, labelsXpos, labelsYPos)
 
+bratObject = Item(bratCost, "brats")
+bratObject.guiStart(root, labelsXpos, labelsYPos + labelYposChanger)
 
-# This is the section of code which creates the a label
-Label(root, text='water', bg='#FFEFDB', font=('arial', 18, 'normal')).place(x=57, y=403)
+hamburgerObject = Item(hamburgerCost, "hamburgers")
+hamburgerObject.guiStart(root, labelsXpos, labelsYPos + 2 * labelYposChanger)
+
+friesObject = Item(sodaCost, "fries")
+friesObject.guiStart(root, labelsXpos, labelsYPos + 3 * labelYposChanger)
+
+sodasObject = Item(sodaCost, "sodas")
+sodasObject.guiStart(root, labelsXpos, labelsYPos + 4 * labelYposChanger)
+
+watersObject = Item(0, "waters")
+watersObject.guiStart(root, labelsXpos, labelsYPos + 5 * labelYposChanger)
+
 
 
 # This is the section of code which creates a text input box
@@ -243,6 +266,5 @@ Button(root, text='Clear', bg='#98F5FF', font=('arial', 18, 'normal'), command=b
 
 # This is the section of code which creates the a label
 Label(root, text='Day Total: ', bg='#FFEFDB', font=('arial', 18, 'normal')).place(x=557, y=353)
-
 
 root.mainloop()
