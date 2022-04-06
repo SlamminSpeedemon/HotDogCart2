@@ -8,10 +8,6 @@ class Item:
         self.itemString = StringVar()
         self.itemEntry = Entry(rootWindow)
 
-    def itemAdd(self):
-        self.itemCount += 1
-
-
     def addItem(self, addItems):
         self.itemCount += addItems
 
@@ -24,8 +20,14 @@ class Item:
 
         self.itemEntry.place(x=xPos + 230, y=yPos + 5)
 
-        Button(self.root, text=("+ " + self.itemName), bg='#8B8378', font=('arial', 18, 'normal'), command=self.itemAdd()).place(x=xPos + 370, y=yPos-10)
+        Button(self.root, text=("+ " + self.itemName), bg='#8B8378', font=('arial', 18, 'normal'), command=self.addItem(1)).place(x=xPos + 370, y=yPos-10)
 
     def guiUpdate(self):
+        try:
+            dummyVar = int(self.itemEntry.get()) + 1 #will throw error if not int
+            self.setItemCount(self.itemEntry.get())
+        except:
+            self.setItemCount(0)
+
         self.itemString.set(str(self.itemCount) + " " + self.itemName + " (" + str(self.itemCost) + "0)")
 
