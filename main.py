@@ -51,9 +51,9 @@ def getDiscount():
 def discountSet():
     try:
         if (getTotal() - int(discountBox.get()) > 0):
-            finalTotalString.set("Final Total: \t" + str(getTotal() - int(discountBox.get())))
+            finalTotalString.set("Final Total: \t" + str(getTotal() - int(discountBox.get())) + "0")
         else:
-            finalTotalString.set("Final Total: \t0.00")
+            finalTotalString.set("Final Total: \t" + str(getTotal()))
     except:
         finalTotalString.set("Final Total: \t0.00")
 

@@ -26,7 +26,7 @@ class Item:
         return float(self.itemCount) * self.itemCost
 
     def guiStart(self, xPos, yPos):
-        if (self.itemCost != 0):
+        if (self.itemCost != 0.0):
             self.itemString.set(str(self.itemCount) + " " + self.itemName + " (" + str(self.itemCost) + "0)")
         else:
             self.itemString.set(str(self.itemCount) + " " + self.itemName + " (free)")
@@ -45,5 +45,8 @@ class Item:
 
         if (int(self.itemCount) < 0):
             self.itemCount = 0
-        self.itemString.set(str(self.itemCount) + " " + self.itemName + " (" + str(self.itemCost) + "0)")
+        if (self.itemCost != 0.0):
+            self.itemString.set(str(self.itemCount) + " " + self.itemName + " (" + str(self.itemCost) + "0)")
+        else:
+            self.itemString.set(str(self.itemCount) + " " + self.itemName + " (free)")
 
