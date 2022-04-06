@@ -2,7 +2,7 @@ from tkinter import *
 class Item:
     def __init__(self, itemCost, itemName, rootWindow):
         self.itemCost = itemCost
-        self.itemCount = 0
+        self.itemCount = int(0)
         self.itemName = itemName
         self.root = rootWindow
         self.itemString = StringVar()
@@ -14,13 +14,23 @@ class Item:
     def setItemCount(self, setItemCount):
         self.itemCount = setItemCount
 
+    def getItemCount(self):
+
+        return self.itemCount
+
+    def getPrice(self):
+        return float(self.itemCount) * self.itemCost
+
     def guiStart(self, xPos, yPos):
-        self.itemString.set(str(self.itemCount) + " " + self.itemName + " (" + str(self.itemCost) + "0)")
-        Label(self.root, textvariable=self.itemString, bg='#FFEFDB', font=('arial', 18, 'normal')).place(x=xPos, y=yPos)
+        if (self.itemCost != 0):
+            self.itemString.set(str(self.itemCount) + " " + self.itemName + " (" + str(self.itemCost) + "0)")
+        else:
+            self.itemString.set(str(self.itemCount) + " " + self.itemName + " (free)")
+        Label(self.root, textvariable=self.itemString, bg='#FFEFDB', font=('arial', 18, 'normal')).place(x=xPos + 20, y=yPos)
 
-        self.itemEntry.place(x=xPos + 230, y=yPos + 5)
+        self.itemEntry.place(x=xPos + 270, y=yPos + 5)
 
-        Button(self.root, text=("+ " + self.itemName), bg='#8B8378', font=('arial', 18, 'normal'), command=self.addItem(1)).place(x=xPos + 370, y=yPos-10)
+        #Button(self.root, text=("add 1"), bg='#8B8378', font=('arial', 18, 'normal'), command=lambda: self.addItem(1)).place(x=xPos + 420, y=yPos-10)
 
     def guiUpdate(self):
         try:
@@ -29,5 +39,7 @@ class Item:
         except:
             self.setItemCount(0)
 
+        if (int(self.itemCount) < 0):
+            self.itemCount = 0
         self.itemString.set(str(self.itemCount) + " " + self.itemName + " (" + str(self.itemCost) + "0)")
 
