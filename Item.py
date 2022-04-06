@@ -14,6 +14,10 @@ class Item:
     def setItemCount(self, setItemCount):
         self.itemCount = setItemCount
 
+    def clearEntry(self):
+        self.itemCount = 0
+        self.itemEntry.delete(0, 5)
+
     def getItemCount(self):
 
         return self.itemCount

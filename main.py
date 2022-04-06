@@ -31,7 +31,6 @@ def totalsFormatter(number):
 
 
 def getFormatted():
-    print(getTotal())
     return "Total: \t\t" + str(getTotal()) + "0"
 
 
@@ -55,6 +54,21 @@ def discountGet():
 def calculate():
     update()
     totalString.set(getFormatted())
+
+def exit():
+    root.destroy()
+
+def clear():
+    hotdogObject.clearEntry()
+    bratObject.clearEntry()
+    hamburgerObject.clearEntry()
+    friesObject.clearEntry()
+    sodasObject.clearEntry()
+    watersObject.clearEntry()
+    calculate()
+
+
+#main program
 
 root = Tk()
 
@@ -110,13 +124,13 @@ Button(root, text='Update', bg='#8B8378', font=('arial', 18, 'normal'), command=
 Button(root, text='Apply Discount', bg='#8B8378', font=('arial', 18, 'normal'), command=lambda: discountGet()).place(
     x=597, y=73)
 Button(root, text='Calculate', bg='#8B8378', font=('arial', 18, 'normal'), command=lambda: calculate()).place(x=657, y=223)
+Button(root, text='Exit', bg='#CD5B45', font=('arial', 18, 'normal'), command=lambda: exit()).place(x=547, y=443)
+Button(root, text='Clear', bg='#98F5FF', font=('arial', 18, 'normal'), command=lambda: clear()).place(x=727, y=383)
+
 
 # This is the section of code which creates a text input box
 discountBox = Entry(root)
 discountBox.place(x=687, y=143)
-
-# This is the section of code which creates a button
-# Button(root, text='Calculate', bg='#8B8378', font=('arial', 18, 'normal'), command=btnClickFunction).place(x=657, y=223)
 
 # This is the section of code which creates a button
 # Button(root, text='Receipt', bg='#8B8378', font=('arial', 18, 'normal'), command=btnClickFunction).place(x=707, y=283)
@@ -125,11 +139,7 @@ discountBox.place(x=687, y=143)
 # Button(root, text='View Register', bg='#98F5FF', font=('arial', 18, 'normal'), command=register).place(x=637, y=443)
 
 # This is the section of code which creates a button
-# Button(root, text='Exit', bg='#CD5B45', font=('arial', 18, 'normal'), command=btnClickFunction).place(x=547, y=443)
-
-# This is the section of code which creates a button
-# Button(root, text='Clear', bg='#98F5FF', font=('arial', 18, 'normal'), command=btnClickFunction).place(x=727, y=383)
-
+#
 # This is the section of code which creates the a label
 
 
