@@ -5,6 +5,7 @@ from Item import*
 from Receipt import*
 
 # declare and set final variables
+receipt = 0
 
 hotdogCost = 2.50
 bratCost = 3.50

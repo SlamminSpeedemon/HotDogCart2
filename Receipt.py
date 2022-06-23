@@ -34,10 +34,10 @@ class Receipt:
         Label(self.root, text=("Your order will be ready\n\tin "+str(random.randint(1,15))+" min"), bg='#FFEFDB', font=('arial', 18, 'normal')).place(
             x=25, y=75 + (len(self.items) + 2) * 50)
 
-        Button(self.root, text="Close", bg='#CD5B45', font=('arial', 18, 'normal'), command=lambda: self.exit()).place(x=125, y=50 + (len(self.items) + 4) * 50)
+        Button(self.root, text="Close", bg='#CD5B45', font=('arial', 18, 'normal'), command=lambda: self.exit()).place(x=40, y=50 + (len(self.items) + 4) * 50)
+        Button(self.root, text="Cancel Order", bg='#FF0000', font=('arial', 18, 'normal'), command=lambda: self.exit()).place(x=140, y=50 + (len(self.items) + 4) * 50)
 
         self.root.mainloop()
 
     def exit(self):
         self.root.destroy()
-
